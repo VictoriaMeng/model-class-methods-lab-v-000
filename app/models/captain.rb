@@ -2,10 +2,10 @@ class Captain < ActiveRecord::Base
   has_many :boats
 
   def self.catamaran_operators
-    Captain.includes(boats: :classifications).where(classifications: {name: "Catamaran"})
+    Captain.includes(boats: :classifications).where(classifications: {name: "Catamaran"}).uniq
   end
 
   def self.sailors
-    Captain.includes(boats: :classifications).where(classifications: {name: "Sailboat"})
+    Captain.includes(boats: :classifications).where(classifications: {name: "Sailboat"}).uniq
   end
 end
